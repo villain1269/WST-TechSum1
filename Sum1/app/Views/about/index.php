@@ -12,10 +12,11 @@
 </head>
 <body>
     <nav>
-        <a href="/">Welcome</a>
-        <a href="/tasks">All Tasks</a>
-        <a href="/profile">Profile</a>
-        <a href="/about">About</a>
+        <a href="<?= site_url('/') ?>">Welcome</a>
+        <a href="<?= site_url('tasks') ?>">All Tasks</a>
+        <a href="<?= site_url('profile') ?>">Profile</a>
+        <a href="<?= site_url('about') ?>">About</a>
+        <a href="<?= site_url('login') ?>">Login</a>
     </nav>
 
     <h1>About This System</h1>

@@ -32,7 +32,8 @@ CREATE TABLE `tasks` (
   `title` varchar(150) NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'pending',
   `task_date` date NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL,
+  `is_archived` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -70,6 +71,7 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -77,8 +79,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `full_name`, `email`, `created_at`) VALUES
-(1, 'Christian', 'Christian Danielle Ola', 'ceola@fit.edu.ph', '2026-09-24 15:09:57');
+INSERT INTO `users` (`id`, `username`, `full_name`, `email`, `password`, `created_at`) VALUES
+(1, 'Christian', 'Christian Danielle Ola', 'ceola@fit.edu.ph', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi.', '2026-09-24 15:09:57');
 
 --
 -- Indexes for dumped tables

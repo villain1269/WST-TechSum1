@@ -8,6 +8,7 @@ class Home extends BaseController
     {
         $data['tasks'] = (new TaskModel())->getTasksForToday();
         $data['today'] = date('F j, Y');
+        $data['loggedIn'] = session()->has('user_id');
         return view('welcome_message', $data);
     }
 }

@@ -17,13 +17,21 @@
 </head>
 <body>
     <nav>
-        <a href="/">Welcome</a>
-        <a href="/tasks">All Tasks</a>
-        <a href="/profile">Profile</a>
-        <a href="/about">About</a>
+        <a href="<?= site_url('/') ?>">Welcome</a>
+        <a href="<?= site_url('tasks') ?>">All Tasks</a>
+        <a href="<?= site_url('profile') ?>">Profile</a>
+        <a href="<?= site_url('about') ?>">About</a>
+        <?php if ($loggedIn): ?>
+            <a href="<?= site_url('tasks/new') ?>">New Task</a>
+            <form method="post" action="<?= site_url('logout') ?>" style="display:inline"><?= csrf_field() ?><button type="submit">Logout</button></form>
+        <?php else: ?>
+            <a href="<?= site_url('login') ?>">Login</a>
+        <?php endif; ?>
     </nav>
 
     <h1>All Tasks</h1>
+    <?php if ($message = session()->getFlashdata('success')): ?><p style="color:green"><?= esc($message) ?></p><?php endif; ?>
+    <?php if ($message = session()->getFlashdata('error')): ?><p style="color:#b00020"><?= esc($message) ?></p><?php endif; ?>
     <p>Total: <?= count($tasks) ?> tasks</p>
 
     <table>
@@ -34,6 +42,7 @@
                 <th>Status</th>
                 <th>Task Date</th>
                 <th>Created At</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -48,6 +57,12 @@
                     </td>
                     <td><?= esc($task['task_date']) ?></td>
                     <td><?= esc($task['created_at']) ?></td>
+                    <td>
+                        <a href="<?= site_url('tasks/edit/' . $task['id']) ?>">Edit</a>
+                        <form method="post" action="<?= site_url('tasks/delete/' . $task['id']) ?>" style="display:inline" onsubmit="return confirm('Archive this task?');">
+                            <?= csrf_field() ?><button type="submit">Archive</button>
+                        </form>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
