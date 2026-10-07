@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2026 at 09:26 AM
+-- Generation Time: Oct 07, 2026 at 12:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,25 +40,27 @@ CREATE TABLE `tasks` (
 -- Dumping data for table `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `title`, `status`, `task_date`, `created_at`) VALUES
-(1, 'Review Module 1 notes', 'done', '2026-09-24', '2026-09-24 15:09:57'),
-(2, 'Submit lab activity 2', 'pending', '2026-09-24', '2026-09-24 15:09:57'),
-(3, 'Team standup meeting', 'pending', '2026-09-24', '2026-09-24 15:09:57'),
-(4, 'Prepare database schema draft', 'done', '2026-09-23', '2026-09-24 15:09:57'),
-(5, 'Read CodeIgniter routing docs', 'done', '2026-09-23', '2026-09-24 15:09:57'),
-(6, 'Write project README', 'pending', '2026-09-23', '2026-09-24 15:09:57'),
-(7, 'Set up XAMPP environment', 'done', '2026-09-22', '2026-09-24 15:09:57'),
-(8, 'Install Composer dependencies', 'done', '2026-09-22', '2026-09-24 15:09:57'),
-(9, 'Draft system requirements', 'pending', '2026-09-21', '2026-09-24 15:09:57'),
-(10, 'Review Module 1 notes', 'done', '2026-09-24', '2026-09-24 15:11:06'),
-(11, 'Submit lab activity 2', 'pending', '2026-09-24', '2026-09-24 15:11:06'),
-(12, 'Team standup meeting', 'pending', '2026-09-24', '2026-09-24 15:11:06'),
-(13, 'Prepare database schema draft', 'done', '2026-09-23', '2026-09-24 15:11:06'),
-(14, 'Read CodeIgniter routing docs', 'done', '2026-09-23', '2026-09-24 15:11:06'),
-(15, 'Write project README', 'pending', '2026-09-23', '2026-09-24 15:11:06'),
-(16, 'Set up XAMPP environment', 'done', '2026-09-22', '2026-09-24 15:11:06'),
-(17, 'Install Composer dependencies', 'done', '2026-09-22', '2026-09-24 15:11:06'),
-(18, 'Draft system requirements', 'pending', '2026-09-21', '2026-09-24 15:11:06');
+INSERT INTO `tasks` (`id`, `title`, `status`, `task_date`, `created_at`, `is_archived`) VALUES
+(1, 'Review Module 1 notes', 'done', '2026-09-24', '2026-09-24 15:09:57', 0),
+(2, 'Submit lab activity 2', 'pending', '2026-09-24', '2026-09-24 15:09:57', 0),
+(3, 'Team standup meeting', 'pending', '2026-09-24', '2026-09-24 15:09:57', 0),
+(4, 'Prepare database schema draft', 'done', '2026-09-23', '2026-09-24 15:09:57', 0),
+(5, 'Read CodeIgniter routing docs', 'done', '2026-09-23', '2026-09-24 15:09:57', 0),
+(6, 'Write project README', 'pending', '2026-09-23', '2026-09-24 15:09:57', 0),
+(7, 'Set up XAMPP environment', 'done', '2026-09-22', '2026-09-24 15:09:57', 0),
+(8, 'Install Composer dependencies', 'done', '2026-09-22', '2026-09-24 15:09:57', 0),
+(9, 'Draft system requirements', 'pending', '2026-09-21', '2026-09-24 15:09:57', 0),
+(10, 'Review Module 1 notes', 'done', '2026-09-24', '2026-09-24 15:11:06', 0),
+(11, 'Submit lab activity 2', 'pending', '2026-09-24', '2026-09-24 15:11:06', 0),
+(12, 'Team standup meeting', 'pending', '2026-09-24', '2026-09-24 15:11:06', 0),
+(13, 'Prepare database schema draft', 'done', '2026-09-23', '2026-09-24 15:11:06', 0),
+(14, 'Read CodeIgniter routing docs', 'done', '2026-09-23', '2026-09-24 15:11:06', 0),
+(15, 'Write project README', 'pending', '2026-09-23', '2026-09-24 15:11:06', 0),
+(16, 'Set up XAMPP environment', 'done', '2026-09-22', '2026-09-24 15:11:06', 0),
+(17, 'Install Composer dependencies', 'done', '2026-09-22', '2026-09-24 15:11:06', 0),
+(18, 'Draft system requirements', 'pending', '2026-09-21', '2026-09-24 15:11:06', 0),
+(19, 'testing task', 'done', '2002-10-25', '2026-10-07 10:47:53', 1),
+(20, 'testtttt', 'done', '2002-10-25', '2026-10-07 10:48:23', 1);
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,7 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL DEFAULT '',
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -80,7 +82,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `full_name`, `email`, `password`, `created_at`) VALUES
-(1, 'Christian', 'Christian Danielle Ola', 'ceola@fit.edu.ph', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi.', '2026-09-24 15:09:57');
+(1, 'Christian', 'Christian Danielle Ola', 'ceola@fit.edu.ph', '$2y$10$qh849KgIcnYgFlbM3iKApOlsmUiQWPeoRR9/awi72UHRSNURfeRwu', '2026-09-24 15:09:57');
 
 --
 -- Indexes for dumped tables
@@ -107,7 +109,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
